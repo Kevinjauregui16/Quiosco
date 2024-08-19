@@ -1,5 +1,14 @@
-export default function NewProducts() {
+import AddProductForm from "@/components/products/AddProductForm";
+import ProductForm from "@/components/products/ProductForm";
+import Heading from "@/components/ui/Heading";
+
+export default function createProductPage() {
   return (
-   <h1>NewProducts</h1>
-  )
+    <>
+      <Heading>Nuevo Producto</Heading>
+      <AddProductForm>
+        <ProductForm />
+      </AddProductForm>
+    </>
+  );
 }
