@@ -3,8 +3,9 @@ import { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { TbPhotoPlus } from "react-icons/tb";
 import Image from "next/image";
+import { getImagePath } from "@/src/utils";
 
-export default function ImageUpload() {
+export default function ImageUpload({ image }: { image: string | undefined }) {
   const [imageUrl, setImageUrl] = useState("");
 
   return (
@@ -43,7 +44,26 @@ export default function ImageUpload() {
               )}
             </div>
           </div>
-          <input type="hidden" name="image" value={imageUrl} />
+
+          {image && !imageUrl && (
+            <div className="space-y-2">
+              <label htmlFor="">Imagen Actual</label>
+              <div className="relative size-64">
+                <Image 
+                fill 
+                src={getImagePath(image)} 
+                alt="imagen producto" 
+                style={{objectFit: 'contain'}}
+                />
+              </div>
+            </div>
+          )}
+
+          <input
+            type="hidden"
+            name="image"
+            defaultValue={imageUrl ? imageUrl : image}
+          />
         </>
       )}
     </CldUploadWidget>
