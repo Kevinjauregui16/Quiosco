@@ -16,7 +16,7 @@ export default function ProductTable({ products }: ProductsTableProps) {
     const confirmToast = toast.info(
       <div>
         <span>¿Estás seguro de que deseas eliminar este producto?</span> <br />
-        <p className="font-bold text-gray-500">"{productName}"</p>
+        <p className="font-bold text-gray-500">{productName}</p>
         <button
           onClick={() => handleDeleteConfirmed(id)}
           className="text-red-400 hover:text-red-300 font-semibold ml-2"

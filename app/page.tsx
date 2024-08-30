@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   const linkClasses =
     "bg-amber-400 hover:bg-amber-300 transition-all px-2 rounded-lg text-2xl";
@@ -11,7 +13,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-white text-white space-y-2">
-      <img className="size-1/4" src="/home.png" alt="Image home" />
+      <div className="flex justify-center items-center">
+         <Image src="/home.png" alt="Image home" width={550} height={550}/>
+      </div>
       {links.map((link) => (
         <a
           key={link.href}
