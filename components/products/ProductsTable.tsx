@@ -1,11 +1,66 @@
+"use client";
 import { ProductsWithCategory } from "@/app/admin/products/page";
 import { formatCurrency } from "@/src/utils";
 import Link from "next/link";
+import { deleteProduct } from "@/actions/delete-product-action";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 type ProductsTableProps = {
   products: ProductsWithCategory;
 };
 export default function ProductTable({ products }: ProductsTableProps) {
+  const [productList, setProductList] = useState(products);
+
+  const handleDelete = (id: number, productName: string) => {
+    const confirmToast = toast.info(
+      <div>
+        <span>¿Estás seguro de que deseas eliminar este producto?</span> <br />
+        <p className="font-bold text-gray-500">"{productName}"</p>
+        <button
+          onClick={() => handleDeleteConfirmed(id)}
+          className="text-red-400 hover:text-red-300 font-semibold ml-2"
+        >
+          Eliminar
+        </button>
+        <button
+          onClick={() => toast.dismiss(confirmToast)}
+          className="text-blue-400 hover:text-blue-300 ml-2"
+        >
+          Cancelar
+        </button>
+      </div>,
+      {
+        autoClose: 3000,
+      }
+    );
+  };
+
+  const handleDeleteConfirmed = async (id: number) => {
+    try {
+      await deleteProduct(id);
+      toast.success("Producto eliminado correctamente", {
+        autoClose: 2000,
+        closeOnClick: true,
+      });
+      setProductList(productList.filter((product) => product.id !== id));
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message.includes("Producto presente en una orden")) {
+          toast.error(
+            "Producto presente en una orden, intenta después de finalizar las órdenes."
+          );
+        } else {
+          toast.error("Hubo un error al eliminar el producto");
+          console.error("Error al eliminar el producto:", error);
+        }
+      } else {
+        toast.error("Hubo un error inesperado");
+        console.error("Error inesperado al eliminar el producto:", error);
+      }
+    }
+  };
+
   return (
     <div className="px-4 sm:px-6 lg:px-8 mt-20">
       <div className="mt-8 flow-root ">
@@ -49,13 +104,19 @@ export default function ProductTable({ products }: ProductsTableProps) {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {product.category.name}
                     </td>
-                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 space-x-2 transition-colors">
                       <Link
                         href={`/admin/products/${product.id}/edit`}
-                        className="text-indigo-600 hover:text-indigo-800"
+                        className="text-indigo-500 hover:text-indigo-300"
                       >
                         Editar <span className="sr-only">, {product.name}</span>
                       </Link>
+                      <button
+                        className="text-red-500 hover:text-red-300"
+                        onClick={() => handleDelete(product.id, product.name)}
+                      >
+                        Eliminar
+                      </button>
                     </td>
                   </tr>
                 ))}
