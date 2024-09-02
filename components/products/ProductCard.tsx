@@ -12,7 +12,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="border bg-white rounded-2xl h-full mt-4">
       <Image
-        className="rounded-t-2xl"
+        className="rounded-t-2xl max-h-[500px] object-contain"
         width={400}
         height={500}
         src={imagePath}
