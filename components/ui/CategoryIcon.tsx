@@ -13,8 +13,12 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
   return (
     <Link href={`/order/${category.slug}`}>
       <div
-        className={`${category.slug === params.category ? "bg-amber-500" : " "}
-        flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
+        className={`${
+          category.slug === params.category
+            ? "bg-white rounded-r-full w-[95%] shadow-xl text-blue-500"
+            : "text-white"
+        }
+        flex items-center gap-4 w-full p-2`}
       >
         <div className="w-16 h-16 relative">
           <Image

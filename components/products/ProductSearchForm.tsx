@@ -21,16 +21,16 @@ const router = useRouter()
     router.push(`/admin/products/search?search=${result.data.search}`);
   };
   return (
-    <form action={handleSearchForm} className="flex items-center">
+    <form action={handleSearchForm} className="flex items-center ">
       <input
         type="text"
         placeholder="Buscar Producto"
-        className="p-2 placeholder-gray-400 w-full"
+        className="p-2 placeholder-gray-400 w-full rounded-l-xl"
         name="search"
       />
       <input
         type="submit"
-        className="bg-indigo-600 p-2 uppercase text-white cursor-pointer"
+        className="bg-blue-500 hover:bg-blue-400 p-2 uppercase text-white cursor-pointer rounded-r-xl"
         value={"Buscar"}
       />
     </form>

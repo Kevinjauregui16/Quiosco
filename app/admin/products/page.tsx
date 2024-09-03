@@ -51,11 +51,11 @@ export default async function ProductsPage({
       <div className="flex flex-col lg:flex-row lg:justify-between">
         <Link
           href={"/admin/products/new"}
-          className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center"
+          className="bg-blue-500 hover:bg-blue-400 shadow-lg transition-all text-white font-semibold w-full lg:w-auto text-xl px-10 py-3 text-center rounded-xl"
         >
-          Crear Producto
+          Crear Producto 
         </Link>
-        <ProductSearchForm/>
+        <ProductSearchForm />
       </div>
 
       <ProductTable products={products} />

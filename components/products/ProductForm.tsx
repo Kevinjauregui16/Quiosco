@@ -22,7 +22,7 @@ export default async function ProductForm({product}: ProductFormProps) {
           id="name"
           type="text"
           name="name"
-          className="block w-full p-3 bg-slate-100"
+          className="block w-full p-3 bg-slate-100 rounded-xl"
           placeholder="Nombre Producto"
           defaultValue={product?.name}
         />
@@ -35,7 +35,7 @@ export default async function ProductForm({product}: ProductFormProps) {
         <input
           id="price"
           name="price"
-          className="block w-full p-3 bg-slate-100"
+          className="block w-full p-3 bg-slate-100 rounded-xl"
           placeholder="Precio Producto"
           defaultValue={product?.price}
         />
@@ -46,7 +46,7 @@ export default async function ProductForm({product}: ProductFormProps) {
           Categoría:
         </label>
         <select
-          className="block w-full p-3 bg-slate-100"
+          className="block w-full p-3 bg-slate-100 rounded-xl"
           id="categoryId"
           name="categoryId"
           defaultValue={product?.categoryId}

@@ -28,7 +28,7 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
             <label className="text-slate-800">Imagen Producto</label>
             <div
               onClick={() => open()}
-              className="relative cursor-pointer hover:opacity-70 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100"
+              className="relative cursor-pointer hover:opacity-70 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100 rounded-xl"
             >
               <TbPhotoPlus size={50} />
               <p className="text-lg font-semibold">Agregar imagen</p>
@@ -49,11 +49,11 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
             <div className="space-y-2">
               <label htmlFor="">Imagen Actual</label>
               <div className="relative size-64">
-                <Image 
-                fill 
-                src={getImagePath(image)} 
-                alt="imagen producto" 
-                style={{objectFit: 'contain'}}
+                <Image
+                  fill
+                  src={getImagePath(image)}
+                  alt="imagen producto"
+                  style={{ objectFit: "contain" }}
                 />
               </div>
             </div>

@@ -10,7 +10,7 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   const imagePath = getImagePath(product.image);
   return (
-    <div className="border bg-white rounded-2xl h-full mt-4">
+    <div className="bg-white shadow-lg hover:shadow-2xl transition-all rounded-2xl h-full mt-4">
       <Image
         className="rounded-t-2xl max-h-[500px] object-contain"
         width={400}
@@ -21,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       />
       <div className="p-5">
         <h3 className="text-2xl font-bold"> {product.name} </h3>
-        <p className=" font-black mt-4 text-4xl text-amber-500">
+        <p className=" font-bold text-2xl mt-2 text-lime-500">
           {formatCurrency(product.price)}
         </p>
         <AddProductButton product={product} />

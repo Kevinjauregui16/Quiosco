@@ -5,7 +5,7 @@ type LatestOrderItemProps = {
 }
 export default function LatestOrderItem({order}: LatestOrderItemProps) {
   return (
-    <div className="bg-white shadow-xl p-5 space-y-5 rounded-2xl">
+    <div className="bg-white shadow-lg p-5 space-y-5 rounded-2xl">
         <p className="text-2xl font-bold text-slate-600">
             Cliente: {order.name}
         </p>

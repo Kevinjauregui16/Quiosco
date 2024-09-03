@@ -18,13 +18,13 @@ export default function OrdersPage() {
   if (data)
     return (
       <>
-        <h1 className="text-center mt-20 text-6xl font-black">
+        <h1 className="text-center mt-10 text-5xl font-bold">
           Ordenes Listas
         </h1>
         <Logo />
 
         {data.length ? (
-          <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-4 mb-16 ">
+          <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-4 mb-10 ">
             {data.map((order) => (
               <LatestOrderItem key={order.id} order={order} />
             ))}

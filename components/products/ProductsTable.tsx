@@ -88,8 +88,8 @@ export default function ProductTable({ products }: ProductsTableProps) {
     <div className="px-4 sm:px-6 lg:px-8 mt-20">
       <div className="mt-8 flow-root ">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8 bg-white p-5 ">
-            <table className="min-w-full divide-y divide-gray-300 ">
+          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8 bg-white rounded-xl p-5 ">
+            <table className="min-w-full divide-y divide-gray-300">
               <thead>
                 <tr>
                   <th
@@ -143,7 +143,7 @@ export default function ProductTable({ products }: ProductsTableProps) {
                       </button>
                       <Link
                         href={`/admin/products/${product.id}/edit`}
-                        className="text-indigo-500 hover:text-indigo-300"
+                        className="text-blue-500 hover:text-blue-300"
                       >
                         Editar <span className="sr-only">, {product.name}</span>
                       </Link>

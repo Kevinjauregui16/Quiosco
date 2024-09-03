@@ -10,7 +10,7 @@ export default function OrderCard({ order }: OrderCardProps) {
   return (
     <section
       aria-labelledby="summary-heading"
-      className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4"
+      className="mt-16 rounded-xl bg-gray-50 px-4 py-6 sm:p-6 shadow-xl lg:mt-0 lg:p-8 space-y-4"
     >
       <p className="text-2xl font-bold text-gray-900">Cliente: {order.name}</p>
       <p className="text-lg font-medium text-gray-900">Productos Ordenados:</p>
@@ -43,7 +43,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         <input type="hidden" value={order.id} name="order_id" />
         <input
           type="submit"
-          className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
+          className="bg-blue-500 hover:bg-lime-500 transition-colors text-white rounded-xl w-full mt-5 p-3 uppercase font-bold cursor-pointer"
           value="Marcar Orden Completada"
         />
       </form>

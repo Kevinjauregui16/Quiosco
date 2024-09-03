@@ -1,10 +1,11 @@
 import { prisma } from "@/src/lib/prisma";
 
+
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
   const orders = await prisma.order.findMany({
-    take: 4,
+    take: 999,
     where: {
       orderReadyAt: {
         not: null,
@@ -23,5 +24,4 @@ export async function GET() {
   });
   return Response.json(orders);
 }
-
-//api de la que se obtienen las ordes listas
+//api de la que se obtienen las ordenes para boxCut

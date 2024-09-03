@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,8 +17,10 @@ export default function AdminRoute({ link }: AdminRouteProps) {
   return (
     <Link
       className={`${
-        isActive ? 'bg-amber-500' : ''
-      } font-bold text-lg border-t border-gray-200 p-3 last-of-type:border-b`}
+        isActive
+          ? "bg-white w-[95%] rounded-r-full text-blue-500 shadow-xl"
+          : "text-white"
+      } font-bold text-xl p-4`}
       href={link.url}
       target={link.blank ? "_blank" : ""}
     >
