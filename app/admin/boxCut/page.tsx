@@ -16,7 +16,7 @@ export default function OrdersPage() {
   const fetcher = () => fetch(url).then((res) => res.json());
 
   const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
-    refreshInterval: 60000,
+    refreshInterval: 7200000, //se refrecan los datos cada 2hr
     revalidateOnFocus: false,
   });
 
