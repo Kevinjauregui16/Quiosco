@@ -1,7 +1,7 @@
 "use client";
 import { useStore } from "@/src/store";
 import ProductDetails from "./ProductDetails";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/src/schema";
@@ -15,10 +15,13 @@ export default function OrderSummary() {
     [order]
   );
 
+  const [paymentMethod, setPaymentMethod] = useState("EFECTIVO");
+
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
       total,
+      method: paymentMethod,
       order,
     };
     const result = OrderSchema.safeParse(data);
@@ -36,6 +39,7 @@ export default function OrderSummary() {
       });
     }
     toast.success("Pedido Realizado Correctamente");
+    console.log(data);
     clearOrder();
   };
 
@@ -55,7 +59,32 @@ export default function OrderSummary() {
               {formatCurrency(total)}
             </span>
           </p>
-          <form action={handleCreateOrder} className="w-full mt-10 space-y-5">
+          <p className="text-center mt-2 text-gray-500">Metodo de pago:</p>
+          <form action={handleCreateOrder} className="w-full space-y-5">
+            <div className="flex justify-evenly items-center mt-1 ">
+              <label className="bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer py-1 px-4 m-auto rounded-xl">
+                <input
+                  className="mx-2"
+                  type="radio"
+                  name="paymentMethod"
+                  value="EFECTIVO"
+                  checked={paymentMethod === "EFECTIVO"}
+                  onChange={() => setPaymentMethod("EFECTIVO")}
+                />
+                Efectivo
+              </label>
+              <label className="bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer py-1 px-4 m-auto rounded-xl">
+                <input
+                  className="mx-2"
+                  type="radio"
+                  name="paymentMethod"
+                  value="TARJETA"
+                  checked={paymentMethod === "TARJETA"}
+                  onChange={() => setPaymentMethod("TARJETA")}
+                />
+                Tarjeta
+              </label>
+            </div>
             <input
               type="text"
               placeholder="Nombre del cliente"

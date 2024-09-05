@@ -29,10 +29,16 @@ model Order {
   id            Int             @id @default(autoincrement())
   name          String
   total         Float
+  method        PayMethod       @default(EFECTIVO)
   date          DateTime        @default(now())
   status        Boolean         @default(false)
   orderReadyAt  DateTime?
   orderProducts OrderProducts[]
+}
+
+enum PayMethod {
+  EFECTIVO
+  TARJETA
 }
 
 model OrderProducts {
