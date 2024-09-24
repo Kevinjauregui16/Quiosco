@@ -2,7 +2,7 @@
 import useSWR from "swr";
 import { OrderWithProducts } from "../../../src/types/index";
 import LatestOrderItem from "../../../components/order/LatestOrderItem";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function OrdersPage() {
   const getCurrentDate = () => {
@@ -37,27 +37,11 @@ export default function OrdersPage() {
   // Calcular la suma de los totales
   const totalSum = filteredOrders.reduce((sum, order) => sum + order.total, 0);
 
-  // Obtener la fecha actual en formato legible
-  const currentDate = new Date().toLocaleDateString("es-ES", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
   return (
     <>
-      <h1 className="text-start mt-20 text-2xl font-semibold">
-        Ventas del{" "}
-        {selectedDate ? (
-          <span className="text-blue-500">{selectedDate}</span>
-        ) : (
-          <span className="text-gray-200">aaa/mm/dd</span>
-        )}
-      </h1>
-
-      <div className="text-start my-4">
-        <label className="block text-sm text-gray-400" htmlFor="datePicker">
-          Selecciona una fecha:
+      <div className="text-start">
+        <label className=" text-xl font-bold" htmlFor="datePicker">
+          Reporte de ventas del: {""}
         </label>
         <input
           type="date"
@@ -71,13 +55,13 @@ export default function OrdersPage() {
       {filteredOrders.length ? (
         <>
           <div className="text-start my-4">
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold text-gray-500">
               Cantidad de ventas:{" "}
               <span className="text-blue-500">{filteredOrders.length}</span>
             </p>
           </div>
           <div className="text-start my-4">
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold text-gray-500">
               Total de ventas:{" "}
               <span className="text-lime-500">${totalSum.toFixed(2)}</span>
             </p>
@@ -89,7 +73,7 @@ export default function OrdersPage() {
                 <tr className="bg-white rounded-xl text-sm">
                   <th className="px-4 py-4">Fecha</th>
                   <th className="px-4 ">Total</th>
-                  <th className="px-4 ">Detalles</th>
+                  <th className="px-4 ">Orden</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -98,7 +82,6 @@ export default function OrdersPage() {
                     <td className="px-4 py-2 w-1/4">
                       {new Date(order.orderReadyAt!).toLocaleDateString()}
                     </td>
-
                     <td className="px-4 py-2 w-1/4">
                       ${order.total.toFixed(2)}
                     </td>
