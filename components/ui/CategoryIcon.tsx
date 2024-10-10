@@ -15,7 +15,7 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
       <div
         className={`${
           category.slug === params.category
-            ? "bg-white rounded-r-full w-[85%] shadow-xl text-blue-500"
+            ? "bg-white rounded-r-full w-max pr-6 shadow-xl text-blue-500"
             : "text-white"
         }
         flex items-center gap-4 w-full p-2`}
