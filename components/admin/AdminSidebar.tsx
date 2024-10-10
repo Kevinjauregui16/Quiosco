@@ -13,7 +13,7 @@ export default function AdminSidebar() {
   return (
     <>
       <Logo />
-      <h1 className="text-center text-xl font-semibold text-white mt-2">Administración.</h1>
+      <h1 className="text-center text-xl font-semibold text-white mt-2">Administración</h1>
       <div className="space-y-3">
         <nav className="flex flex-col mt-20">
           {adminNavigation.map((link) => (
