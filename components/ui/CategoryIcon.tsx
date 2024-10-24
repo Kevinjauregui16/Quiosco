@@ -15,10 +15,10 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
       <div
         className={`${
           category.slug === params.category
-            ? "bg-white rounded-r-full w-[90%] shadow-xl text-blue-500"
+            ? "bg-white rounded-r-full shadow-xl text-blue-500"
             : "text-white"
         }
-        flex items-center gap-4 w-full p-2`}
+        flex items-center gap-4 p-2`}
       >
         <div className="w-16 h-16 relative">
           <Image
